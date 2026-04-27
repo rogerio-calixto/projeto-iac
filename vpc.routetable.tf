@@ -1,0 +1,25 @@
+resource "aws_route_table" "rt_private_1" {
+  vpc_id = aws_vpc.main.id
+  
+  tags = {
+     Name = "projeto-iac-rtb-private1-${var.subnet_pvt_config[0].avaiable_zone}"
+  }
+}
+
+resource "aws_route_table" "rt_private_2" {
+  vpc_id = aws_vpc.main.id
+  
+  tags = {
+     Name = "projeto-iac-rtb-private2-${var.subnet_pvt_config[1].avaiable_zone}"
+  }
+}
+
+resource "aws_route_table_association" "rt_private_association_subnet1" {
+  route_table_id = aws_route_table.rt_private_1.id
+  subnet_id      = aws_subnet.subnet_private_1.id
+}
+
+resource "aws_route_table_association" "rt_private_association_subnet2" {
+  route_table_id = aws_route_table.rt_private_2.id
+  subnet_id      = aws_subnet.subnet_private_2.id
+}
