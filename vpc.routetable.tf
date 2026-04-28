@@ -2,7 +2,7 @@ resource "aws_route_table" "rt_private_1" {
   vpc_id = aws_vpc.main.id
   
   tags = {
-     Name = "projeto-iac-rtb-private1-${var.subnet_pvt_config[0].avaiable_zone}"
+     Name = "projeto-iac-rtb-private1-${var.vpc-settings.subnet_pvt_config[0].avaiable_zone}"
   }
 }
 
@@ -10,7 +10,7 @@ resource "aws_route_table" "rt_private_2" {
   vpc_id = aws_vpc.main.id
   
   tags = {
-     Name = "projeto-iac-rtb-private2-${var.subnet_pvt_config[1].avaiable_zone}"
+     Name = "projeto-iac-rtb-private2-${var.vpc-settings.subnet_pvt_config[1].avaiable_zone}"
   }
 }
 
