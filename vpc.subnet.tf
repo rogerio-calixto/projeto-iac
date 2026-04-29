@@ -4,7 +4,7 @@ resource "aws_subnet" "subnet_private_1" {
   availability_zone = var.vpc-settings.subnet_pvt_config[0].available_zone
 
   tags = {
-    Name = var.vpc-settings.subnet_pvt_config[0].name
+    Name = "projeto-iac-${var.vpc-settings.subnet_pvt_config[0].name}"
   }
 }
 
@@ -14,6 +14,6 @@ resource "aws_subnet" "subnet_private_2" {
   availability_zone = var.vpc-settings.subnet_pvt_config[1].available_zone
 
   tags = {
-    Name = var.vpc-settings.subnet_pvt_config[1].name
+    Name = "projeto-iac-${var.vpc-settings.subnet_pvt_config[1].name}"
   }
 }
