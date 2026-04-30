@@ -33,4 +33,4 @@ vpc-settings = {
   ]
 }
 
-keypair = "projeto-iac-keypair-dev"
+keypair = "projeto-iac-keypair-2-dev"

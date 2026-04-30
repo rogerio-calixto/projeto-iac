@@ -4,9 +4,20 @@ resource "aws_security_group" "main" {
   vpc_id      = aws_vpc.main.id
 
   ingress {
-    description = "HTTP"
+    description = "RDP"
     from_port   = 3089
     to_port     = 3089
+    protocol    = "tcp"
+    cidr_blocks = [
+      "187.183.41.49/32",
+      "201.28.82.210/32"
+    ]
+  }
+
+    ingress {
+    description = "HTTP"
+    from_port   = 80
+    to_port     = 80
     protocol    = "tcp"
     cidr_blocks = [
       "187.183.41.49/32",

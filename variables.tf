@@ -38,7 +38,7 @@ variable "win_amis" {
 }
 
 variable "instance_type" {
-  default     = "t3.micro"
+  default     = "m6i.large"
   description = "tipo da instância"
 }
 
