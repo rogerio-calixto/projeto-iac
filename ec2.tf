@@ -5,8 +5,8 @@ resource "aws_security_group" "main" {
 
   ingress {
     description = "RDP"
-    from_port   = 3089
-    to_port     = 3089
+    from_port   = 3389
+    to_port     = 3389
     protocol    = "tcp"
     cidr_blocks = [
       "187.183.41.49/32",
