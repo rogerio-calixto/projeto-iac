@@ -76,12 +76,12 @@ $MFA_IDENTIFIER = Read-Host "Identificador MFA (colocar somente do / em diante n
 # ARN do PRINCIPAL MFA
 $MFA_SERIAL_ARN = "arn:aws:iam::${PRINCIPAL_ACCOUNT_ID}:mfa/${MFA_IDENTIFIER}"
 
-$MFA_CODE = Read-Host "Codigo MFA (6 digitos)"
-
 $ASSUME_ROLE_DURATION = Read-Host "Informe a duracao em segundos (Padrao = 900 = 15min)"
 if ([string]::IsNullOrEmpty($ASSUME_ROLE_DURATION)) {
     $ASSUME_ROLE_DURATION = 900
 }
+
+$MFA_CODE = Read-Host "Codigo MFA (6 digitos)"
 
 # ==================================================
 # ASSUME A ROLE E CAPTURA AS CREDENCIAIS TEMPORARIAS
@@ -128,14 +128,8 @@ aws sts get-caller-identity
 # INFORMACAO UTIL
 # ===============
 
-$EXPIRATION_LOCAL = [datetime]::ParseExact(
-    $Env:AWS_SESSION_EXPIRATION,
-    "dd/MM/yyyy HH:mm:ss",
-    [System.Globalization.CultureInfo]::GetCultureInfo("pt-BR")
-)
-
 Write-Host ""
-Write-Host "Credenciais expiram em: $($EXPIRATION_LOCAL.ToString('dd-MM-yyyy HH:mm:ss')) (UTC-3)"
-Write-Host ""
-Write-Host "Pronto para uso com AWS CLI / Terraform."
-
+$Expiration = Get-Date $env:AWS_SESSION_EXPIRATION
+$formatedDate = $Expiration.ToString("dd-MM-yyyy HH:mm:ss")
+Write-Host "`nCredenciais expiram em: $formatedDate"
+Write-Host "`nPronto para uso com AWS CLI / Terraform."
