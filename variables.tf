@@ -37,15 +37,25 @@ variable "win_amis" {
   }
 }
 
+variable "linux_amis" {
+  description = "imagens disponíveis"
+  default = {
+    us-east-1 = "ami-0a59ec92177ec3fad"
+    us-east-2 = ""
+    us-west-1 = ""
+    us-west-2 = ""
+  }
+}
+
 variable "instance_type" {
-  default     = "m6i.large"
+  default     = "t3.micro"
   description = "tipo da instância"
 }
 
 variable "root-block-device-size" {
   type        = any
   description = "tamanho do volume EBS"
-  default     = 30
+  default     = 10
 }
 
 variable "keypair" {
